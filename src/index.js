@@ -25,7 +25,7 @@ app.get("/", function(req, res){
 app.post('/add',function(req, res){
     var num1=req.body.num1;
     var num2=req.body.num2;  
-    
+    var result=num1-num2;
     
     if((isInt(num1) && isInt(num2)) || (isFloat(num1) && isFloat(num2))){
         if(num1>1000000 || num2>1000000){
@@ -39,7 +39,7 @@ app.post('/add',function(req, res){
             res.json({
                     status : "success",
                     message: "the sum of given two number",
-                    sum: num1+num2,
+                    sum: result,
             });
         }
         
@@ -57,7 +57,8 @@ app.post('/add',function(req, res){
 app.post('/sub',function(req, res){
     var num1=req.body.num1;
     var num2=req.body.num2;  
-    
+    var result=num1-num2;
+
     if((isInt(num1) && isInt(num2)) || (isFloat(num1) && isFloat(num2))){
         if((num1-num2)<-1000000){
             res.json({
@@ -72,7 +73,7 @@ app.post('/sub',function(req, res){
                 
                     status : "success",
                     message: "the difference of given two number",
-                    difference: num1-num2
+                    difference: result,
                 
             });
         }
@@ -92,7 +93,7 @@ app.post('/sub',function(req, res){
 app.post('/multiply',function(req, res){
     var num1=req.body.num1;
     var num2=req.body.num2;  
-    
+    var result=num1*num2;
     if((isInt(num1) && isInt(num2)) || (isFloat(num1) && isFloat(num2))){
         if( (num1*num2) > 1000000){
             res.json({
@@ -107,7 +108,7 @@ app.post('/multiply',function(req, res){
                
                     status : "success",
                     message: "The product of given numbers",
-                    result: num1*num2
+                    result: result,
                
             });
         }
@@ -135,12 +136,14 @@ app.post('/division',function(req, res){
                     message: "Cannot divide by zero",
             });
         }
+
+        var result=num1/num2;
         else{
             res.json({
                 
                     status : "success",
                     message: "The division of given numbers",
-                    result: num1/num2
+                    result: result,
             });
         }
         
