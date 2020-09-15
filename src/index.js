@@ -29,7 +29,7 @@ app.post('/add',function(req, res){
         if(num1>max_val || num2>max_val){
             res.send(
                 JSON.stringify({
-                    status: "error",
+                    status: "failure",
                     message: "Overflow"
                 })
             );
@@ -64,7 +64,7 @@ app.post('/sub',function(req, res){
         if((num1-num2)<min_val){
             res.send(
                 JSON.stringify({
-                    status: "error",
+                    status: "failure",
                     message: "Underflow"
                 })
             );
@@ -99,7 +99,7 @@ app.post('/multiply',function(req, res){
         if( (num1*num2) > max_val || num1>max_val || num2>max_val){
             res.send(
                 JSON.stringify({
-                    status: "error",
+                    status: "failure",
                     message: "Overflow"
                 })
             );
@@ -134,7 +134,7 @@ app.post('/division',function(req, res){
         if(num2 == 0){
             res.send(
                 JSON.stringify({
-                    status: "error",
+                    status: "failure",
                     message: "Cannot divide by zero"
                 })
             );
