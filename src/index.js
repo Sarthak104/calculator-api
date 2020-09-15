@@ -61,23 +61,19 @@ app.post('/sub',function(req, res){
     }
         if((num1-num2)<-1000000){
             res.json({
-                
-                    status: "error",
-                    message: "Underflow"
-                
+                status: "error",
+                message: "Underflow"
             });
+            return;
         }
-        
             res.json({
-                
-                    status : "success",
-                    message: "the difference of given two number",
-                    difference: result,
-                
+                status : "success",
+                message: "the difference of given two number",
+                difference: result,
             });
 });
 
-app.post('/multiply',function(req, res){
+app.post('/multiply', (req, res) => {
     var num1=req.body.num1;
     var num2=req.body.num2;  
     var result=num1*num2;
@@ -90,22 +86,16 @@ app.post('/multiply',function(req, res){
     }
         if( result > 1000000){
             res.json({
-                
                     status: "error",
-                    message: "Overflow"
-                
+                    message: "Overflow",
             });
             return;
         }
-        else{
-            res.json({
-               
-                    status : "success",
-                    message: "The product of given numbers",
-                    result: result,
-               
+        res.json({
+                status : "success",
+                message: "The product of given numbers",
+                result: result,
             });
-        }
 });
 
 app.post('/division',function(req, res){
@@ -119,7 +109,7 @@ app.post('/division',function(req, res){
         });
         return; 
     }
-        if(num2 == 0){
+    else if(num2 == 0){
             res.json({
                     status: "failure",
                     message: "Cannot divide by zero",
