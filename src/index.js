@@ -33,7 +33,7 @@ app.post('/add',function(req, res){
         });
         return; 
     }
-        if(num1>1000000 || num2>1000000){
+        else if(num1>1000000 || num2>1000000){
             res.json({
                 status: "error",
                 message: "Overflow",
@@ -47,16 +47,6 @@ app.post('/add',function(req, res){
                     sum: result,
             });
         }
-        
-    
-    else{
-            res.json({
-                
-                    status: "failure",
-                    message: "Invalid data types"
-               
-            });
-    }
 });
 
 app.post('/sub',function(req, res){
