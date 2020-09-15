@@ -25,7 +25,7 @@ app.get("/", function(req, res){
 app.post('/add',function(req, res){
     var num1=req.body.num1;
     var num2=req.body.num2;  
-    var result=num1-num2;
+    var result=num1+num2;
     if(typeof num1 === "string" || typeof num2 === "string") {
         res.json({
           status: "failure",
