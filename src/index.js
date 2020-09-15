@@ -33,7 +33,7 @@ app.post('/add',function(req, res){
         });
         return; 
     }
-    if(num1>1000000 || num2>1000000){
+    if(num1>1000000 || num2>1000000 || result>1000000){
         res.json({
             status: "error",
             message: "Overflow",
@@ -42,7 +42,7 @@ app.post('/add',function(req, res){
     }
     res.json({
             status : "success",
-            message: "the sum of given two number",
+            message: "the sum of given two numbers",
             sum: result,
     });
 });
@@ -68,7 +68,7 @@ app.post('/sub',function(req, res){
         }
             res.json({
                 status : "success",
-                message: "the difference of given two number",
+                message: "the difference of given two numbers",
                 difference: result,
             });
 });
@@ -109,8 +109,8 @@ app.post('/division',function(req, res){
         });
         return; 
     }
-    else if(num2 == 0){
-            res.json({
+    else if(num2 === 0){
+            return res.json({
                     status: "failure",
                     message: "Cannot divide by zero",
             });
