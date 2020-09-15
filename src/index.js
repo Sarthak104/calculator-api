@@ -98,7 +98,7 @@ app.post('/multiply', (req, res) => {
             });
 });
 
-app.post('/division',function(req, res){
+app.post('/divide',function(req, res){
     var num1=req.body.num1;
     var num2=req.body.num2;  
     
