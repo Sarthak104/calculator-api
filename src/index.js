@@ -12,6 +12,155 @@ app.use(bodyParser.urlencoded({ extended: false }))
 
 app.use(bodyParser.json())
 // your code goes here
+function isInt(n){
+    return Number(n) === n && n % 1 === 0;
+}
+function isFloat(n){
+    return Number(n) === n && n % 1 !== 0;
+}
+
+var max_val=1000000;
+var min_val=-1000000;
+app.post('/add',function(req, res){
+    var num1=req.body.num1;
+    var num2=req.body.num2;  
+    
+    if((isInt(num1) && isInt(num2)) || (isFloat(num1) && isFloat(num2))){
+        if(num1>max_val || num2>max_val){
+            res.send(
+                JSON.stringify({
+                    status: "error",
+                    message: "Overflow"
+                })
+            );
+        }
+        else{
+            res.send(
+                JSON.stringify({
+                    status : "success",
+                    message: "the sum of given two number",
+                    sum: num1+num2,
+                })
+            );
+        }
+        
+    }
+    else{
+            res.send(
+                JSON.stringify({
+                    status: "failure",
+                    message: "invalid data types"
+                })
+            );
+        
+    }
+});
+
+app.post('/sub',function(req, res){
+    var num1=req.body.num1;
+    var num2=req.body.num2;  
+    
+    if((isInt(num1) && isInt(num2)) || (isFloat(num1) && isFloat(num2))){
+        if((num1-num2)<min_val){
+            res.send(
+                JSON.stringify({
+                    status: "error",
+                    message: "Underflow"
+                })
+            );
+        }
+        else{
+            res.send(
+                JSON.stringify({
+                    status : "success",
+                    message: "the difference of given two number",
+                    sum: num1-num2,
+                })
+            );
+        }
+        
+    }
+    else{
+            res.send(
+                JSON.stringify({
+                    status: "failure",
+                    message: "invalid data types"
+                })
+            );
+        
+    }
+});
+
+app.post('/multiply',function(req, res){
+    var num1=req.body.num1;
+    var num2=req.body.num2;  
+    
+    if((isInt(num1) && isInt(num2)) || (isFloat(num1) && isFloat(num2))){
+        if( (num1*num2) > max_val || num1>max_val || num2>max_val){
+            res.send(
+                JSON.stringify({
+                    status: "error",
+                    message: "Overflow"
+                })
+            );
+        }
+        else{
+            res.send(
+                JSON.stringify({
+                    status : "success",
+                    message: "The product of given numbers",
+                    sum: num1*num2,
+                })
+            );
+        }
+        
+    }
+    else{
+            res.send(
+                JSON.stringify({
+                    status: "failure",
+                    message: "invalid data types"
+                })
+            );
+        
+    }
+});
+
+app.post('/division',function(req, res){
+    var num1=req.body.num1;
+    var num2=req.body.num2;  
+    
+    if((isInt(num1) && isInt(num2)) || (isFloat(num1) && isFloat(num2))){
+        if(num2 == 0){
+            res.send(
+                JSON.stringify({
+                    status: "error",
+                    message: "Cannot divide by zero"
+                })
+            );
+        }
+        else{
+            res.send(
+                JSON.stringify({
+                    status : "success",
+                    message: "The division of given numbers",
+                    sum: num1/num2,
+                })
+            );
+        }
+        
+    }
+    else{
+            res.send(
+                JSON.stringify({
+                    status: "failure",
+                    message: "invalid data types"
+                })
+            );
+        
+    }
+});
+
 
 // here
 
