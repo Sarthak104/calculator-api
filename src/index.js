@@ -26,8 +26,13 @@ app.post('/add',function(req, res){
     var num1=req.body.num1;
     var num2=req.body.num2;  
     var result=num1-num2;
-    
-    if((isInt(num1) && isInt(num2)) || (isFloat(num1) && isFloat(num2))){
+    if(typeof num1 === "string" || typeof num2 === "string") {
+        res.json({
+          status: "failure",
+          message: "Invalid data types",
+        });
+        return; 
+    }
         if(num1>1000000 || num2>1000000){
             res.json({
                 status: "error",
@@ -43,7 +48,7 @@ app.post('/add',function(req, res){
             });
         }
         
-    }
+    
     else{
             res.json({
                 
@@ -95,13 +100,14 @@ app.post('/multiply',function(req, res){
     var num2=req.body.num2;  
     var result=num1*num2;
     if((isInt(num1) && isInt(num2)) || (isFloat(num1) && isFloat(num2))){
-        if( (num1*num2) > 1000000){
+        if( result > 1000000){
             res.json({
                 
                     status: "error",
                     message: "Overflow"
                 
             });
+            return;
         }
         else{
             res.json({
@@ -138,14 +144,14 @@ app.post('/division',function(req, res){
         }
 
         var result=num1/num2;
-        else{
+        
             res.json({
                 
                     status : "success",
                     message: "The division of given numbers",
                     result: result,
             });
-        }
+        
         
     }
     else{
