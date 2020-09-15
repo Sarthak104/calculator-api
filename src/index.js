@@ -109,15 +109,15 @@ app.post('/division',function(req, res){
         });
         return; 
     }
-    else if(num2 === 0){
-            return res.json({
+    if(num2 === 0){
+            res.json({
                     status: "failure",
                     message: "Cannot divide by zero",
             });
+            return;
         }
-        var result=num1/num2;
+        var result= num1 / num2;
             res.json({
-                
                     status : "success",
                     message: "The division of given numbers",
                     result: result,
